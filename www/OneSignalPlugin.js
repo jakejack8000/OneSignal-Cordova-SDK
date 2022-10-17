@@ -94,7 +94,9 @@ OneSignalPlugin._processFunctionList = function(array, param) {
     for (var i = 0; i < array.length; i++)
         array[i](param);
 };
-
+OneSignalPlugin.prototype.getIds = function(IdsReceivedCallBack) {
+    window.cordova.exec(IdsReceivedCallBack, function(){}, "OneSignalPush", "getIds", []);
+};
 OneSignalPlugin.prototype.completeNotification = function(notification, shouldDisplay) {
     window.cordova.exec(function(){}, function(){}, "OneSignalPush", "completeNotification", [notification.notificationId, shouldDisplay]);
 };
